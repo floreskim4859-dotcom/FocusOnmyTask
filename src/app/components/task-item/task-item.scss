@@ -1,0 +1,81 @@
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.task-label {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.task-label input {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--accent);
+}
+
+.task-actions,
+.duration-control {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.task-actions {
+  flex: 0 0 auto;
+}
+
+.duration-control {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.duration-control input {
+  width: 4.25rem;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: var(--glass-surface);
+  color: var(--text);
+  text-align: center;
+}
+
+.completed .task-label span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.delete-button {
+  padding: 0.4rem 0.65rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+}
+
+.delete-button:hover {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+@media (max-width: 520px) {
+  .task-item {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .task-actions {
+    align-self: flex-end;
+  }
+}

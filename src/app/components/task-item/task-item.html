@@ -1,0 +1,35 @@
+<div class="task-item" [class.completed]="task().completed">
+  <label class="task-label">
+    <input
+      type="checkbox"
+      [checked]="task().completed"
+      [attr.aria-label]="'Mark ' + task().title + ' as ' + (task().completed ? 'active' : 'completed')"
+      (change)="toggled.emit()"
+    />
+    <span>{{ task().title }}</span>
+  </label>
+  <div class="task-actions">
+    <label class="duration-control">
+      <span>Focus</span>
+      <input
+        type="number"
+        min="1"
+        max="180"
+        step="1"
+        [value]="task().focusMinutes"
+        [disabled]="durationDisabled()"
+        [attr.aria-label]="'Focus duration for ' + task().title + ' in minutes'"
+        (change)="updateFocusMinutes($event)"
+      />
+      <span>min</span>
+    </label>
+    <button
+      class="delete-button"
+      type="button"
+      [attr.aria-label]="'Delete ' + task().title"
+      (click)="deleted.emit()"
+    >
+      Delete
+    </button>
+  </div>
+</div>

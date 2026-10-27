@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="header-content">
+    <div class="header-main">
+      <a class="brand" routerLink="/" aria-label="Focus home">
+        <span class="brand-mark" aria-hidden="true">F</span>
+        <span>focus<span class="brand-light">flow</span></span>
+      </a>
+      <nav class="navigation" aria-label="Main navigation">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Focus</a>
+        <a routerLink="/settings" routerLinkActive="active">Settings</a>
+      </nav>
+      <div class="header-actions">
+        <span class="session-count">Today's sessions: <strong>{{ storage.todaySessions }}</strong></span>
+        <button
+          class="theme-button"
+          type="button"
+          (click)="storage.toggleDarkMode()"
+          [attr.aria-label]="storage.darkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+        >
+          {{ storage.darkMode() ? 'Light' : 'Dark' }}
+        </button>
+      </div>
+    </div>
+    <div class="world-clocks" aria-label="World clocks">
+      @for (clock of clocks(); track clock.zone) {
+        <div class="world-clock">
+          <span class="clock-location">{{ clock.city }} <span>· {{ clock.zone }}</span></span>
+          <time class="clock-time">{{ clock.time }}</time>
+        </div>
+      }
+    </div>
+  </div>
+</header>

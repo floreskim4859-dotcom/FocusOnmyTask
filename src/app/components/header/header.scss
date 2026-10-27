@@ -1,0 +1,135 @@
+.site-header {
+  border-bottom: 1px solid var(--glass-border);
+  background: var(--glass-surface);
+  backdrop-filter: blur(18px) saturate(135%);
+}
+
+.header-content {
+  display: grid;
+  width: min(100% - 2rem, 960px);
+  gap: 0;
+  margin: 0 auto;
+}
+
+.header-main {
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 1rem;
+}
+
+.brand-light {
+  color: var(--accent);
+}
+
+.navigation,
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navigation a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.navigation a.active {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.session-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.session-count strong {
+  margin-left: 0.25rem;
+  color: var(--text);
+}
+
+.theme-button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.world-clocks {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(max-content, 1fr));
+  gap: 0.75rem;
+  padding: 0.65rem 0 0.8rem;
+  border-top: 1px solid var(--glass-border);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.world-clock {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 7rem;
+}
+
+.clock-location {
+  color: var(--muted);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.clock-location span {
+  color: var(--accent);
+}
+
+.clock-time {
+  color: var(--text);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+@media (max-width: 620px) {
+  .header-main {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+  }
+
+  .navigation {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+}

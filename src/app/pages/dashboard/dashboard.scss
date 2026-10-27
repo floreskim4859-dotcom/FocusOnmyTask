@@ -1,0 +1,28 @@
+.dashboard {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2rem, 7vw, 3rem);
+  letter-spacing: -0.05em;
+}
+
+.welcome-copy {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+}

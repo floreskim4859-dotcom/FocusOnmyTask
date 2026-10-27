@@ -1,0 +1,38 @@
+<section class="timer-card" aria-labelledby="timer-title">
+  <p class="eyebrow">{{ timer.phase() === 'focus' ? 'FOCUS SESSION' : 'SHORT BREAK' }}</p>
+  <label class="task-picker">
+    <span>Focus task</span>
+    <select
+      [value]="timer.activeTask()?.id ?? ''"
+      [disabled]="timer.isRunning()"
+      (change)="updateSelectedTask($event)"
+    >
+      <option value="">General focus · 25 min</option>
+      @for (task of timer.storage.tasks(); track task.id) {
+        <option [value]="task.id">
+          {{ task.title }} · {{ task.focusMinutes }} min{{ task.completed ? ' · completed' : '' }}
+        </option>
+      }
+    </select>
+  </label>
+  <h1 id="timer-title" class="timer-display" role="timer" aria-live="off">
+    {{ timer.formattedTime }}
+  </h1>
+  <p class="timer-hint">
+    @if (timer.phase() === 'focus') {
+      {{ timer.activeTask()?.title ?? 'Stay present. One task at a time.' }}
+    } @else {
+      Take a moment to recharge.
+    }
+  </p>
+  <div class="timer-controls">
+    @if (timer.isRunning()) {
+      <button class="button button-primary" type="button" (click)="timer.pause()">Pause</button>
+    } @else {
+      <button class="button button-primary" type="button" (click)="timer.start()">
+        {{ timer.remainingSeconds() === (timer.phase() === 'focus' ? timer.focusDurationSeconds : 300) ? 'Start' : 'Resume' }}
+      </button>
+    }
+    <button class="button button-secondary" type="button" (click)="timer.reset()">Reset</button>
+  </div>
+</section>

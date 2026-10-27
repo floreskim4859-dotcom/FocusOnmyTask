@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.app-main {
+  width: min(100% - 2rem, 960px);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 0;
+}

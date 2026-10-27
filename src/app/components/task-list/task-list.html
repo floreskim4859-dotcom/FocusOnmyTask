@@ -1,0 +1,57 @@
+<section class="task-card" aria-labelledby="tasks-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">MAKE IT COUNT</p>
+      <h2 id="tasks-title">Your tasks</h2>
+    </div>
+    <span class="task-count">
+      {{ taskCount() }} {{ taskCount() === 1 ? 'task' : 'tasks' }} ·
+      {{ formatDuration(remainingFocusMinutes()) }} planned for {{ remainingCount() }} remaining
+      ({{ completedCount() }} completed)
+    </span>
+  </div>
+
+  <form class="task-form" (submit)="addTask($event)">
+    <label class="visually-hidden" for="new-task">Add a task</label>
+    <input
+      id="new-task"
+      type="text"
+      placeholder="What would you like to focus on?"
+      [value]="taskTitle()"
+      (input)="updateTaskTitle($event)"
+      maxlength="160"
+    />
+    <label class="new-task-duration">
+      <span>Focus time</span>
+      <span class="duration-input">
+        <input
+          type="number"
+          min="1"
+          max="180"
+          step="1"
+          [value]="newTaskFocusMinutes()"
+          (change)="updateNewTaskFocusMinutes($event)"
+          aria-label="New task focus duration in minutes"
+        />
+        <span>min</span>
+      </span>
+    </label>
+    <button class="add-button" type="submit" [disabled]="!taskTitle().trim()">Add task</button>
+  </form>
+
+  @if (storage.tasks().length) {
+    <div class="task-list" role="list">
+      @for (task of storage.tasks(); track task.id) {
+        <app-task-item
+          [task]="task"
+          [durationDisabled]="timer.isRunning()"
+          (toggled)="storage.toggleTask(task.id)"
+          (deleted)="deleteTask(task.id)"
+          (focusMinutesChanged)="updateFocusMinutes(task.id, $event)"
+        />
+      }
+    </div>
+  } @else {
+    <p class="empty-state">No tasks yet. Add one to get started.</p>
+  }
+</section>

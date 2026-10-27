@@ -1,0 +1,20 @@
+<section class="settings-card">
+  <p class="eyebrow">PERSONALIZE YOUR SPACE</p>
+  <h1>Settings</h1>
+  <div class="setting-row">
+    <div>
+      <h2>Appearance</h2>
+      <p>Choose the theme that feels right for your focus time.</p>
+    </div>
+    <button class="theme-toggle" type="button" (click)="storage.toggleDarkMode()">
+      Switch to {{ storage.darkMode() ? 'light' : 'dark' }} mode
+    </button>
+  </div>
+  <div class="setting-row">
+    <div>
+      <h2>Pomodoro timer</h2>
+      <p>Focus sessions are 25 minutes, followed by a 5-minute break.</p>
+    </div>
+    <span class="duration">25 / 5 min</span>
+  </div>
+</section>
